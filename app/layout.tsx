@@ -1,12 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Bodoni_Moda, Grand_Hotel, Kristi, Mansalva, Reenie_Beanie } from "next/font/google";
+import { Bodoni_Moda, Mansalva } from "next/font/google";
 import "./globals.css";
 
 const bodoni = Bodoni_Moda({ subsets: ["latin"], axes: ["opsz"], variable: "--font-bodoni" });
-const grandHotel = Grand_Hotel({ subsets: ["latin"], weight: "400", variable: "--font-grand-hotel" });
-const kristi = Kristi({ subsets: ["latin"], weight: "400", variable: "--font-kristi" });
 const mansalva = Mansalva({ subsets: ["latin"], weight: "400", variable: "--font-mansalva" });
-const reenie = Reenie_Beanie({ subsets: ["latin"], weight: "400", variable: "--font-reenie" });
 
 const description =
   "Ella Marciano, photographer and art director. Personal work between fashion editorial and anthropology, and selected clients and publications.";
@@ -33,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${bodoni.variable} ${grandHotel.variable} ${kristi.variable} ${mansalva.variable} ${reenie.variable}`}
+      className={`${bodoni.variable} ${mansalva.variable}`}
     >
       <body>{children}</body>
     </html>
