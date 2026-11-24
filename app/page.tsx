@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { homeTiles, photoKey } from "@/app/content";
+import { HomeIntro } from "@/components/home-intro";
 import { Picture } from "@/components/picture";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -8,6 +9,7 @@ import { SiteHeader } from "@/components/site-header";
 export default function Home() {
   return (
     <>
+      <HomeIntro />
       <SiteHeader home />
       <main className="home">
         <ul className="tiles">

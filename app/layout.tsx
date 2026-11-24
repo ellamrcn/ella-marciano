@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Bodoni_Moda, Mansalva } from "next/font/google";
+import { Mansalva, Newsreader } from "next/font/google";
 import "./globals.css";
 
-const bodoni = Bodoni_Moda({ subsets: ["latin"], axes: ["opsz"], variable: "--font-bodoni" });
+const newsreader = Newsreader({ subsets: ["latin"], axes: ["opsz"], variable: "--font-newsreader" });
 const mansalva = Mansalva({ subsets: ["latin"], weight: "400", variable: "--font-mansalva" });
 
 const description =
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${bodoni.variable} ${mansalva.variable}`}
+      className={`${newsreader.variable} ${mansalva.variable}`}
     >
       <body>{children}</body>
     </html>

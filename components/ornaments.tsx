@@ -12,6 +12,7 @@ export function ArrowOut({ className }: { className?: string }) {
 
 const cutouts = {
   hundred: { src: "/images/objects/flying-hundred.png", width: 500, height: 449 },
+  heels: { src: "/images/objects/red-heels.png", width: 588, height: 820 },
 };
 
 export type CutoutName = keyof typeof cutouts;

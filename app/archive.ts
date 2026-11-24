@@ -72,6 +72,9 @@ const toPhoto = (entry: ArchiveEntry): Photo => ({
 
 export const archive = (category: ArchiveCategory) => entries.filter((entry) => entry.category === category).map(toPhoto);
 
+export const archiveCaptioned = (category: ArchiveCategory) =>
+  entries.filter((entry) => entry.category === category).map((entry) => ({ caption: entry.caption, photo: toPhoto(entry) }));
+
 export const archivePhoto = (id: string) => {
   const entry = entries.find((item) => item.id === id);
   if (!entry) throw new Error(`Unknown archive photo ${id}`);

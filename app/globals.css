@@ -6,7 +6,8 @@
   --ink: #1c0b10;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --gutter: clamp(1rem, 3.2vw, 3rem);
-  --serif: var(--font-bodoni), "Bodoni 72", Didot, serif;
+  --neon: 0 0 0.35em rgb(200 16 46 / 0.45);
+  --serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
   --marker: var(--font-mansalva), cursive;
   color-scheme: light;
 }
@@ -129,9 +130,15 @@ img {
 }
 
 .site-nav__link[aria-current="page"],
-.site-nav__link[aria-expanded="true"],
-.categories__link[aria-current="page"] {
+.site-nav__link[aria-expanded="true"] {
   color: var(--red);
+}
+
+.categories__link[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
 }
 
 .categories {
@@ -164,10 +171,26 @@ img {
   }
 }
 
+.site-nav__link,
+.tile__image {
+  transition:
+    color 0.3s var(--ease-out),
+    text-shadow 0.3s var(--ease-out),
+    rotate 0.5s var(--ease-out);
+}
+
 @media (hover: hover) {
-  .site-nav__link:hover,
-  .categories__link:hover {
+  .site-nav__link:hover {
     color: var(--red);
+    text-shadow: var(--neon);
+    rotate: -2deg;
+  }
+
+  .categories__link:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
   }
 }
 
@@ -212,8 +235,19 @@ img {
 }
 
 @media (hover: hover) {
+  .tile__link:hover .tile__image {
+    rotate: -1.2deg;
+  }
+
+  .tile:nth-child(even) .tile__link:hover .tile__image {
+    rotate: 1.2deg;
+  }
+
   .tile__link:hover .tile__caption {
-    color: var(--red);
+    text-decoration: underline;
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
   }
 }
 
@@ -241,6 +275,52 @@ img {
   font-size: 0.8125rem;
 }
 
+.intro {
+  --card-landscape: clamp(180px, 26vw, 420px);
+  --card-portrait: clamp(130px, 18vw, 300px);
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  background: var(--pink);
+  cursor: pointer;
+  animation: intro-out 0.6s var(--ease-out) 3.1s forwards;
+}
+
+.intro[data-skipped="true"] {
+  animation: intro-out 0.35s var(--ease-out) forwards;
+}
+
+.intro__card {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  translate: -50% -50%;
+  rotate: var(--r);
+  opacity: 0;
+  box-shadow: 0 18px 40px -14px rgb(60 10 30 / 0.45);
+  animation: deal 0.45s var(--ease-out) var(--d) forwards;
+}
+
+@keyframes deal {
+  from {
+    opacity: 0;
+    scale: 1.12;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 @media (max-width: 760px) {
   .site-nav {
     display: block;
@@ -252,6 +332,11 @@ img {
 
   .home {
     padding-top: 4.5rem;
+  }
+
+  .intro {
+    --card-landscape: 62vw;
+    --card-portrait: 44vw;
   }
 
   .tiles {
@@ -273,8 +358,71 @@ img {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none;
+  }
+
 
   .categories[data-open="true"] .categories__item {
     animation: none;
+  }
+}
+
+.dollar-mark {
+  display: inline-block;
+  margin-left: 0.25em;
+  color: var(--red);
+  font-family: var(--marker);
+  font-size: 0.7em;
+  rotate: 12deg;
+  vertical-align: 0.35em;
+}
+
+.lost {
+  display: grid;
+  justify-items: start;
+  align-content: start;
+  gap: 1.4rem;
+  min-height: calc(100svh - 16rem);
+  padding: clamp(3.5rem, 7vw, 6rem) var(--gutter) clamp(4rem, 8vw, 7rem);
+}
+
+.lost__mark {
+  margin: 0;
+  color: var(--red);
+  font-family: var(--marker);
+  font-size: clamp(6rem, 16vw, 14rem);
+  line-height: 0.8;
+  rotate: -8deg;
+}
+
+.lost__title {
+  margin: 0;
+  font-family: var(--marker);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.6vw, 3.4rem);
+  line-height: 1;
+  rotate: -2deg;
+}
+
+.lost__link {
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 0.3s var(--ease-out), text-shadow 0.3s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .lost__link:hover {
+    color: var(--red);
+    text-shadow: var(--neon);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav__link,
+  .tile__image {
+    transition: color 0.3s var(--ease-out);
   }
 }

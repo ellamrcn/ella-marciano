@@ -76,3 +76,24 @@ export const homeTiles: Tile[] = [
   { photo: archivePhoto("px-12"), caption: "Playboy", href: "/clients" },
   { photo: photos.lollipop, caption: "Office Magazine, The Love Issue", href: "/clients" },
 ];
+
+export const introPhotos: Photo[] = [
+  photos.featherShowgirl,
+  archivePhoto("px-15"),
+  photos.officeCover,
+  photos.elvisBack,
+  archivePhoto("px-03"),
+  photos.closeKiss,
+  archivePhoto("px-45"),
+  photos.pinkShowgirl,
+  archivePhoto("px-23"),
+  archivePhoto("px-11"),
+  photos.velvetStairs,
+  archivePhoto("px-47"),
+  archivePhoto("px-24"),
+  photos.saluteShowgirl,
+  archivePhoto("px-09"),
+  photos.lollipop,
+  archivePhoto("px-30"),
+  archivePhoto("px-49"),
+];
