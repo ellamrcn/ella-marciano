@@ -12,7 +12,16 @@ export default defineConfig({
   plugins: [structureTool({ structure }), media()],
   schema: {
     types: schemaTypes,
-    templates: (templates) => templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
+    templates: (templates) => [
+      ...templates.filter(({ schemaType }) => !singletonTypes.has(schemaType) && schemaType !== "project"),
+      { id: "project-fashion", title: "Fashion project", schemaType: "project", value: { category: "fashion" } },
+      {
+        id: "project-anthropological",
+        title: "Anthropological Perspectives project",
+        schemaType: "project",
+        value: { category: "anthropological" },
+      },
+    ],
   },
   document: {
     actions: (actions, { schemaType }) =>

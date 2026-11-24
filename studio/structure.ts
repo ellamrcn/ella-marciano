@@ -4,6 +4,7 @@ import { CogIcon } from "@sanity/icons/Cog";
 import { DocumentVideoIcon } from "@sanity/icons/DocumentVideo";
 import { ImagesIcon } from "@sanity/icons/Images";
 import { UsersIcon } from "@sanity/icons/Users";
+import { AddIcon } from "@sanity/icons/Add";
 
 export const structure: StructureResolver = (S, context) =>
   S.list()
@@ -22,6 +23,14 @@ export const structure: StructureResolver = (S, context) =>
         icon: ImagesIcon,
         filter: 'category == "fashion"',
         createIntent: false,
+        menuItems: [
+          S.menuItem()
+            .title("New Fashion project")
+            .icon(AddIcon)
+            .showAsAction(true)
+            .intent({ type: "create", params: { type: "project", template: "project-fashion" } })
+            .serialize(),
+        ],
         S,
         context,
       }),
@@ -32,6 +41,14 @@ export const structure: StructureResolver = (S, context) =>
         icon: ImagesIcon,
         filter: 'category == "anthropological"',
         createIntent: false,
+        menuItems: [
+          S.menuItem()
+            .title("New Anthropological Perspectives project")
+            .icon(AddIcon)
+            .showAsAction(true)
+            .intent({ type: "create", params: { type: "project", template: "project-anthropological" } })
+            .serialize(),
+        ],
         S,
         context,
       }),
