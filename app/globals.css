@@ -445,7 +445,7 @@ img {
   position: relative;
   margin: 0;
   padding: clamp(1.4rem, 3vw, 2.6rem) var(--gutter) 0;
-  color: var(--ink);
+  color: var(--red);
   font-family: var(--marker);
   font-weight: 400;
   font-size: clamp(1.9rem, 2.8vw, 2.7rem);
