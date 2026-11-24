@@ -560,35 +560,27 @@ img {
 }
 
 .logo__heart--depth {
-  fill: #7a0a1c;
+  fill: #9e0a22;
   transform: translateZ(calc(var(--depth) * var(--layer) / -9));
 }
 
 .logo__heart--back {
-  fill: var(--red);
   transform: translateZ(calc(var(--depth) * -1)) rotateY(180deg);
-}
-
-.logo__heart--front {
-  fill: var(--red);
-  filter: drop-shadow(0 0 0.08em #ff2a47) drop-shadow(0 0 0.35em rgb(255 30 60 / 0.7));
 }
 
 .logo__heart--back,
 .logo__heart--front {
-  stroke: #ff3b55;
-  stroke-width: 2.4;
-}
-
-.logo__heart--back {
-  filter: drop-shadow(0 0 0.35em rgb(255 30 60 / 0.7));
+  fill: #ff1438;
+  stroke: #ffc2cc;
+  stroke-width: 1.6;
+  filter: drop-shadow(0 0 0.05em #ff2448) drop-shadow(0 0 0.2em #ff1438) drop-shadow(0 0 0.6em rgb(255 20 56 / 0.75));
 }
 
 .logo__name {
   grid-area: 1 / 1;
   color: var(--ink);
   font-family: var(--logo);
-  font-size: 0.78em;
+  font-size: 0.7em;
   font-weight: 400;
   line-height: 1;
   white-space: nowrap;
@@ -598,7 +590,7 @@ img {
 }
 
 .logo__name--back {
-  transform: translateZ(calc(var(--depth) * -1 / 0.78 - 0.03em)) rotateY(180deg);
+  transform: translateZ(calc(var(--depth) * -1 / 0.7 - 0.03em)) rotateY(180deg);
 }
 
 @keyframes logo-spin {
