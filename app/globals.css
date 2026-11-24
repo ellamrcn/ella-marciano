@@ -8,7 +8,7 @@
   --gutter: clamp(1rem, 3.2vw, 3rem);
   --neon: 0 0 0.35em rgb(200 16 46 / 0.45);
   --serif: var(--font-garamond), Garamond, "Times New Roman", serif;
-  --logo: var(--font-russell), "Brush Script MT", cursive;
+  --logo: var(--font-brush), "Brush Script MT", cursive;
   --marker: var(--font-mansalva), cursive;
   color-scheme: light;
 }
@@ -449,6 +449,12 @@ img {
   line-height: 1;
 }
 
+@media (max-width: 360px) {
+  .board__name {
+    font-size: 1.85rem;
+  }
+}
+
 .board__words {
   margin: 0;
   padding: 0;
@@ -531,28 +537,79 @@ img {
 }
 
 .logo {
+  display: inline-block;
+  perspective: 7em;
+}
+
+.logo__spin {
+  --depth: 0.22em;
   position: relative;
-  display: inline-grid;
+  display: grid;
   place-items: center;
-  padding: 0.76em 0.7em 0.69em;
-  isolation: isolate;
+  padding: 0.95em 1.25em 0.9em;
+  transform-style: preserve-3d;
+  animation: logo-spin 7s linear infinite;
 }
 
 .logo__heart {
   position: absolute;
   inset: 0;
-  z-index: -1;
   width: 100%;
   height: 100%;
+  overflow: visible;
+}
+
+.logo__heart--depth {
+  fill: #7a0a1c;
+  transform: translateZ(calc(var(--depth) * var(--layer) / -9));
+}
+
+.logo__heart--back {
   fill: var(--red);
+  transform: translateZ(calc(var(--depth) * -1)) rotateY(180deg);
+}
+
+.logo__heart--front {
+  fill: var(--red);
+  filter: drop-shadow(0 0 0.08em #ff2a47) drop-shadow(0 0 0.35em rgb(255 30 60 / 0.7));
+}
+
+.logo__heart--back,
+.logo__heart--front {
+  stroke: #ff3b55;
+  stroke-width: 2.4;
+}
+
+.logo__heart--back {
+  filter: drop-shadow(0 0 0.35em rgb(255 30 60 / 0.7));
 }
 
 .logo__name {
+  grid-area: 1 / 1;
   color: var(--ink);
   font-family: var(--logo);
+  font-size: 0.78em;
   font-weight: 400;
+  line-height: 1;
   white-space: nowrap;
-  -webkit-text-stroke: 0.018em var(--ink);
-  paint-order: stroke fill;
   rotate: -3deg;
+  transform: translateZ(0.02em);
+  backface-visibility: hidden;
+}
+
+.logo__name--back {
+  transform: translateZ(calc(var(--depth) * -1 / 0.78 - 0.03em)) rotateY(180deg);
+}
+
+@keyframes logo-spin {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo__spin {
+    animation: none;
+    transform: rotateY(-14deg);
+  }
 }

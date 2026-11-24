@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/json-ld";
 import "./globals.css";
 
 const garamond = EB_Garamond({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-garamond" });
-const russell = localFont({ src: "./fonts/russell-italic.woff2", variable: "--font-russell", display: "block" });
+const brush = localFont({ src: "./fonts/brush-script.woff2", variable: "--font-brush", display: "block" });
 const mansalva = Mansalva({ subsets: ["latin"], weight: "400", variable: "--font-mansalva" });
 
 export const metadata: Metadata = {
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${garamond.variable} ${russell.variable} ${mansalva.variable}`}
+      className={`${garamond.variable} ${brush.variable} ${mansalva.variable}`}
     >
       <body>
         <JsonLd data={siteJsonLd()} />
