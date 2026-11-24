@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import { filmEmbed, films } from "@/app/(sections)/data";
+import { filmEmbed, films, videosCredit } from "@/app/content";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -12,13 +12,11 @@ export default function VideosPage() {
       <SiteHeader />
       <main className="page page--videos">
         <h1 className="page__title hand-marker">Videos</h1>
-        <p className="page__lede">
-          Direction, filming, interviews and creative vision by Ella Marciano, on every film on this page.
-        </p>
+        {videosCredit ? <p className="page__lede">{videosCredit}</p> : null}
         <ol className="programme">
           {films.map((film, index) => (
             <li key={film.url} className="programme__film">
-              <div className="programme__screen" style={{ "--aspect": film.aspect ?? "16 / 9" } as CSSProperties}>
+              <div className="programme__screen" style={{ "--aspect": film.aspect } as CSSProperties}>
                 <iframe
                   src={filmEmbed(film)}
                   title={film.title}

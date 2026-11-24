@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { selfPortrait, statement } from "@/app/(sections)/data";
+import { selfPortrait, statement } from "@/app/content";
 import { Picture } from "@/components/picture";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";

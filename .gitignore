@@ -44,3 +44,5 @@ next-env.d.ts
 *.md
 brief/
 .wrangler/
+/app/site-content.json
+/public/images/cms/

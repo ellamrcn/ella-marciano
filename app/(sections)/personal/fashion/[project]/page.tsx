@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fashionSeries } from "@/app/(sections)/data";
+import { fashionSeries } from "@/app/content";
 import { ProjectPage } from "@/app/(sections)/_components/project-page";
 
 export const dynamicParams = false;

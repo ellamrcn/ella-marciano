@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Mansalva, Newsreader } from "next/font/google";
+import { description, introPhotos } from "@/app/content";
 import "./globals.css";
 
 const newsreader = Newsreader({ subsets: ["latin"], axes: ["opsz"], variable: "--font-newsreader" });
 const mansalva = Mansalva({ subsets: ["latin"], weight: "400", variable: "--font-mansalva" });
 
-const description =
-  "Ella Marciano, photographer and art director. Personal work between fashion editorial and anthropology, and selected clients and publications.";
+const sharePhoto = introPhotos[0];
+const shareSource = sharePhoto?.sources.find((source) => source.width >= 1100) ?? sharePhoto?.sources.at(-1);
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ella-marciano.com"),
@@ -17,7 +18,16 @@ export const metadata: Metadata = {
     description,
     url: "https://ella-marciano.com",
     siteName: "Ella Marciano",
-    images: [{ url: "/images/photos/office-6-1100.jpg", width: 1100, height: 734 }],
+    images:
+      sharePhoto && shareSource
+        ? [
+            {
+              url: shareSource.src,
+              width: shareSource.width,
+              height: Math.round((shareSource.width * sharePhoto.height) / sharePhoto.width),
+            },
+          ]
+        : [],
     type: "website",
   },
 };

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Series } from "@/app/(sections)/data";
+import type { Series } from "@/app/content";
 import { Gallery } from "@/app/(sections)/_components/gallery";
 import { Cutout } from "@/components/ornaments";
 import { SiteFooter } from "@/components/site-footer";

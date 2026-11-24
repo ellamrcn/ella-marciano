@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import type { Series } from "@/app/(sections)/data";
+import { personalCredit, type Series } from "@/app/content";
 import { Picture } from "@/components/picture";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -11,9 +11,7 @@ export function ProjectIndex({ series }: { series: Series }) {
       <SiteHeader />
       <main className="page">
         <h1 className="page__title hand-marker">{series.label}</h1>
-        <p className="page__lede">
-          Photography, art direction, casting and creative vision by Ella Marciano, on every project on this page.
-        </p>
+        {personalCredit ? <p className="page__lede">{personalCredit}</p> : null}
         <ul className="tiles">
           {series.projects.map((project, index) => {
             const cover = project.photos[0];

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { photoKey, type Photo } from "@/app/content";
-import { clients, type Publication } from "@/app/(sections)/data";
+import { clients, type Publication } from "@/app/content";
 import { ArrowOut } from "@/components/ornaments";
 import { Picture } from "@/components/picture";
 import { SiteFooter } from "@/components/site-footer";
