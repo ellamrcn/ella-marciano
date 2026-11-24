@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Mansalva, Newsreader } from "next/font/google";
+import { EB_Garamond, Mansalva, Yellowtail } from "next/font/google";
 import { description, introPhotos } from "@/app/content";
 import "./globals.css";
 
-const newsreader = Newsreader({ subsets: ["latin"], axes: ["opsz"], variable: "--font-newsreader" });
+const garamond = EB_Garamond({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-garamond" });
+const yellowtail = Yellowtail({ subsets: ["latin"], weight: "400", variable: "--font-yellowtail" });
 const mansalva = Mansalva({ subsets: ["latin"], weight: "400", variable: "--font-mansalva" });
 
 const sharePhoto = introPhotos[0];
@@ -40,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${mansalva.variable}`}
+      className={`${garamond.variable} ${yellowtail.variable} ${mansalva.variable}`}
     >
       <body>{children}</body>
     </html>

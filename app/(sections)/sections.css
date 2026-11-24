@@ -189,6 +189,11 @@
   object-fit: cover;
 }
 
+.ledger .entry__images:has(> :nth-child(4)) {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .entry__title {
   margin: 0;
   font-size: clamp(1.15rem, 1.6vw, 1.5rem);
@@ -334,4 +339,13 @@
   .page {
     padding-top: 6rem;
   }
+}
+
+.page__lede,
+.programme__title,
+.client__name,
+.entry__title,
+.me__text,
+.contact__email {
+  font-style: italic;
 }
