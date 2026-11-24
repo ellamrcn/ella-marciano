@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { descriptions, pageMetadata } from "@/app/seo";
 import { photoKey, type Photo } from "@/app/content";
 import { clients, type Publication } from "@/app/content";
 import { ArrowOut } from "@/components/ornaments";
@@ -6,7 +7,7 @@ import { Picture } from "@/components/picture";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-export const metadata: Metadata = { title: "Selected Clients & Publications" };
+export const metadata: Metadata = pageMetadata({ title: "Selected Clients & Publications", description: descriptions.clients, path: "/clients" });
 
 export default function ClientsPage() {
   return (

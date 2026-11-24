@@ -1,36 +1,32 @@
 import type { Metadata, Viewport } from "next";
-import { EB_Garamond, Mansalva, Yellowtail } from "next/font/google";
-import { description, introPhotos } from "@/app/content";
+import { EB_Garamond, Mansalva } from "next/font/google";
+import localFont from "next/font/local";
+import { descriptions, siteJsonLd, siteName, siteTitle, siteUrl } from "@/app/seo";
+import { JsonLd } from "@/components/json-ld";
 import "./globals.css";
 
 const garamond = EB_Garamond({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-garamond" });
-const yellowtail = Yellowtail({ subsets: ["latin"], weight: "400", variable: "--font-yellowtail" });
+const russell = localFont({ src: "./fonts/russell-italic.woff2", variable: "--font-russell", display: "block" });
 const mansalva = Mansalva({ subsets: ["latin"], weight: "400", variable: "--font-mansalva" });
 
-const sharePhoto = introPhotos[0];
-const shareSource = sharePhoto?.sources.find((source) => source.width >= 1100) ?? sharePhoto?.sources.at(-1);
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ella-marciano.com"),
-  title: { default: "Ella Marciano", template: "%s, Ella Marciano" },
-  description,
+  metadataBase: new URL(siteUrl),
+  title: { default: siteTitle, template: `%s, ${siteName}` },
+  description: descriptions.home,
+  applicationName: siteName,
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  formatDetection: { email: false, address: false, telephone: false },
+  robots: { index: true, follow: true, googleBot: { "max-image-preview": "large", "max-snippet": -1 } },
   openGraph: {
-    title: "Ella Marciano",
-    description,
-    url: "https://ella-marciano.com",
-    siteName: "Ella Marciano",
-    images:
-      sharePhoto && shareSource
-        ? [
-            {
-              url: shareSource.src,
-              width: shareSource.width,
-              height: Math.round((shareSource.width * sharePhoto.height) / sharePhoto.width),
-            },
-          ]
-        : [],
     type: "website",
+    siteName,
+    locale: "en_US",
+    title: siteTitle,
+    description: descriptions.home,
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: siteName }],
   },
+  twitter: { card: "summary_large_image", title: siteTitle, description: descriptions.home, images: ["/og.png"] },
 };
 
 export const viewport: Viewport = {
@@ -41,9 +37,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${garamond.variable} ${yellowtail.variable} ${mansalva.variable}`}
+      className={`${garamond.variable} ${russell.variable} ${mansalva.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <JsonLd data={siteJsonLd()} />
+        {children}
+      </body>
     </html>
   );
 }

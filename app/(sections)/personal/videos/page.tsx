@@ -1,10 +1,11 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import { descriptions, pageMetadata } from "@/app/seo";
 import { filmEmbed, films, videosCredit } from "@/app/content";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-export const metadata: Metadata = { title: "Videos" };
+export const metadata: Metadata = pageMetadata({ title: "Videos", description: descriptions.videos, path: "/personal/videos" });
 
 export default function VideosPage() {
   return (

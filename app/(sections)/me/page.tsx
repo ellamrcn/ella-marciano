@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { descriptions, pageMetadata } from "@/app/seo";
 import { selfPortrait, statement } from "@/app/content";
 import { Picture } from "@/components/picture";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-export const metadata: Metadata = { title: "About Me" };
+export const metadata: Metadata = pageMetadata({ title: "About Me", description: descriptions.about, path: "/me" });
 
 export default function MePage() {
   return (

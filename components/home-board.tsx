@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { useState } from "react";
 import { personalCategories, sectionLinks } from "@/app/content";
+import { Logo } from "@/components/logo";
 
 type Spot = { x: string; y: string; mx: string; my: string; r: string };
 
@@ -11,9 +12,9 @@ const place = ({ x, y, mx, my, r }: Spot) =>
   ({ "--x": x, "--y": y, "--mx": mx, "--my": my, "--r": r }) as CSSProperties;
 
 const spots = {
-  personal: { x: "36%", y: "30%", mx: "10%", my: "31%", r: "-4deg" },
+  personal: { x: "36%", y: "30%", mx: "10%", my: "33%", r: "-4deg" },
   clients: { x: "6%", y: "67%", mx: "6%", my: "66%", r: "-3deg" },
-  me: { x: "70%", y: "18%", mx: "44%", my: "15%", r: "5deg" },
+  me: { x: "70%", y: "24%", mx: "44%", my: "20%", r: "5deg" },
   contact: { x: "66%", y: "84%", mx: "50%", my: "84%", r: "-6deg" },
 } satisfies Record<string, Spot>;
 
@@ -29,7 +30,9 @@ export function HomeBoard() {
   return (
     <main className="board">
       <img src="/images/objects/one-dollar.jpg" width={1000} height={427} alt="" className="board__bill" />
-      <h1 className="board__name">Ella Marciano</h1>
+      <h1 className="board__name">
+        <Logo />
+      </h1>
       <nav aria-label="Sections">
         <ul className="board__words">
           <li className="board__spot" style={place(spots.personal)}>

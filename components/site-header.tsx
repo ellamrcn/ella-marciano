@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { personalCategories, sectionLinks } from "@/app/content";
+import { Logo } from "@/components/logo";
 import { Cutout } from "@/components/ornaments";
 
 export function SiteHeader() {
@@ -14,7 +15,9 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <p className="site-name">
-        <Link href="/">Ella Marciano</Link>
+        <Link href="/" className="site-name__link" aria-label="Ella Marciano, home">
+          <Logo />
+        </Link>
         <Cutout name="hundred" className="site-name__bill" eager />
       </p>
 

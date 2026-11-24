@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { descriptions, pageMetadata } from "@/app/seo";
 import { email, instagram } from "@/app/content";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = pageMetadata({ title: "Contact", description: descriptions.contact, path: "/contact" });
 
 export default function ContactPage() {
   return (

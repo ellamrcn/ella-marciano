@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { anthropologicalSeries } from "@/app/content";
+import { projectJsonLd, projectMetadata } from "@/app/seo";
+import { JsonLd } from "@/components/json-ld";
 import { ProjectPage } from "@/app/(sections)/_components/project-page";
 
 export const dynamicParams = false;
@@ -10,11 +12,15 @@ export function generateStaticParams() {
 
 export async function generateMetadata(props: PageProps<"/personal/anthropological-perspectives/[project]">): Promise<Metadata> {
   const { project } = await props.params;
-  const match = anthropologicalSeries.projects.find((item) => item.slug === project);
-  return { title: match ? `${match.title}, Anthropological Perspectives` : "Anthropological Perspectives" };
+  return projectMetadata(anthropologicalSeries, project);
 }
 
 export default async function AnthropologicalPerspectivesProjectPage(props: PageProps<"/personal/anthropological-perspectives/[project]">) {
   const { project } = await props.params;
-  return <ProjectPage series={anthropologicalSeries} slug={project} />;
+  return (
+    <>
+      <JsonLd data={projectJsonLd(anthropologicalSeries, project)} />
+      <ProjectPage series={anthropologicalSeries} slug={project} />
+    </>
+  );
 }
