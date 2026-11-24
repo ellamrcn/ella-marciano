@@ -505,6 +505,26 @@ img {
   font-size: clamp(1.7rem, 3.2vw, 3.2rem);
 }
 
+@media (min-width: 761px) and (min-height: 560px) {
+  .board {
+    height: 100vh;
+    height: 100svh;
+    min-height: 0;
+  }
+
+  .board__name {
+    font-size: clamp(2rem, min(3.6vw, 6svh), 3.6rem);
+  }
+
+  .board__word {
+    font-size: clamp(2.2rem, min(5.4vw, 9svh), 5.6rem);
+  }
+
+  .board__word--small {
+    font-size: clamp(1.5rem, min(3.2vw, 5.4svh), 3.2rem);
+  }
+}
+
 .board__word[aria-expanded="true"] {
   color: var(--red);
   text-shadow: var(--neon);
