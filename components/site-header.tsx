@@ -6,18 +6,17 @@ import { useState } from "react";
 import { personalCategories, sectionLinks } from "@/app/content";
 import { Cutout } from "@/components/ornaments";
 
-export function SiteHeader({ home = false }: { home?: boolean }) {
+export function SiteHeader() {
   const pathname = usePathname();
   const [personalOpen, setPersonalOpen] = useState(pathname.startsWith("/personal"));
   const current = (href: string) => (pathname === href || pathname === `${href}/` ? "page" : undefined);
-  const NameTag = home ? "h1" : "p";
 
   return (
     <header className="site-header">
-      <NameTag className="site-name">
+      <p className="site-name">
         <Link href="/">Ella Marciano</Link>
         <Cutout name="hundred" className="site-name__bill" eager />
-      </NameTag>
+      </p>
 
       <nav className="site-nav" aria-label="Sections">
         <ul className="site-nav__main">

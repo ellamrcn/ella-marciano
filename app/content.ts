@@ -52,30 +52,9 @@ export const personalCategories: NavLink[] = [
 
 export const sectionLinks = {
   clients: { label: "Selected Clients & Publications", href: "/clients" },
-  me: { label: "Me", href: "/me" },
+  me: { label: "About Me", href: "/me" },
   contact: { label: "Contact", href: "/contact" },
 } satisfies Record<string, NavLink>;
-
-export type Tile = { photo: Photo; caption: string; href: string };
-
-export const homeTiles: Tile[] = [
-  { photo: photos.officeCover, caption: "Office Magazine, Iris Law", href: "/clients" },
-  { photo: archivePhoto("px-15"), caption: "Fashion", href: "/personal/fashion" },
-  { photo: photos.featherShowgirl, caption: "Office Magazine, Issue 23", href: "/clients" },
-  { photo: photos.elvisBack, caption: "Anthropological Perspectives", href: "/personal/anthropological-perspectives" },
-  { photo: archivePhoto("px-08"), caption: "Playboy", href: "/clients" },
-  { photo: photos.closeKiss, caption: "Office Magazine, The Love Issue", href: "/clients" },
-  { photo: archivePhoto("px-24"), caption: "Videos, The Simple Life", href: "/personal/videos" },
-  { photo: archivePhoto("px-47"), caption: "Me", href: "/me" },
-  { photo: archivePhoto("px-03"), caption: "Fashion", href: "/personal/fashion" },
-  { photo: archivePhoto("px-11"), caption: "Anthropological Perspectives", href: "/personal/anthropological-perspectives" },
-  { photo: photos.velvetStairs, caption: "Office Magazine, Iris Law", href: "/clients" },
-  { photo: archivePhoto("px-45"), caption: "Anthropological Perspectives", href: "/personal/anthropological-perspectives" },
-  { photo: archivePhoto("px-23"), caption: "Fashion", href: "/personal/fashion" },
-  { photo: photos.pinkShowgirl, caption: "Office Magazine, Issue 23", href: "/clients" },
-  { photo: archivePhoto("px-12"), caption: "Playboy", href: "/clients" },
-  { photo: photos.lollipop, caption: "Office Magazine, The Love Issue", href: "/clients" },
-];
 
 export const introPhotos: Photo[] = [
   photos.featherShowgirl,

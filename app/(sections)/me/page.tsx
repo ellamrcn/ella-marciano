@@ -4,14 +4,14 @@ import { Picture } from "@/components/picture";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-export const metadata: Metadata = { title: "Me" };
+export const metadata: Metadata = { title: "About Me" };
 
 export default function MePage() {
   return (
     <>
       <SiteHeader />
       <main className="page page--me">
-        <h1 className="page__title hand-marker">Me</h1>
+        <h1 className="page__title hand-marker">About Me</h1>
         {selfPortrait ? (
           <figure className="me__portrait">
             <Picture photo={selfPortrait} sizes="(max-width: 760px) 100vw, 42vw" priority />
