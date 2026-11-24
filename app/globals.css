@@ -4,6 +4,7 @@
   --pink: #f2b8c9;
   --red: #c8102e;
   --ink: #1c0b10;
+  --fuchsia: #d4007f;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --gutter: clamp(1rem, 3.2vw, 3rem);
   --neon: 0 0 0.35em rgb(200 16 46 / 0.45);
@@ -74,8 +75,8 @@ img {
 .site-name {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.6rem;
-  width: fit-content;
   margin: 0;
   font-size: clamp(1.7rem, 2.4vw, 2.3rem);
   line-height: 1;
@@ -128,14 +129,18 @@ img {
   font-size: clamp(1.45rem, 2vw, 1.95rem);
 }
 
-.site-nav__link[aria-current="page"],
 .site-nav__link[aria-expanded="true"] {
   color: var(--red);
 }
 
+.site-nav__link[aria-current="page"],
+.categories__link[aria-current="page"] {
+  color: var(--fuchsia);
+}
+
 .categories__link[aria-current="page"] {
   text-decoration: underline;
-  text-decoration-color: var(--red);
+  text-decoration-color: var(--fuchsia);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.2em;
 }
@@ -482,7 +487,7 @@ img {
   padding: 0;
   border: 0;
   background: none;
-  color: var(--red);
+  color: var(--ink);
   font-family: var(--marker);
   font-weight: 400;
   font-size: clamp(2.4rem, 5.4vw, 5.6rem);
@@ -501,12 +506,14 @@ img {
 }
 
 .board__word[aria-expanded="true"] {
-  color: var(--ink);
+  color: var(--red);
+  text-shadow: var(--neon);
 }
 
 @media (hover: hover) {
   .board__word:hover {
-    color: var(--ink);
+    color: var(--red);
+    text-shadow: var(--neon);
     rotate: -3deg;
   }
 }
