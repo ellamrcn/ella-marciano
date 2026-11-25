@@ -14,7 +14,7 @@ import {
 
 export const siteUrl = "https://ella-marciano.com";
 export const siteName = "Ella Marciano";
-export const siteTitle = "Ella Marciano, Photographer and Art Director";
+export const siteTitle = siteName;
 
 const shareImage = { url: "/og.png", width: 1200, height: 630, alt: "Ella Marciano" };
 
