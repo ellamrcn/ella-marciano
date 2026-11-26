@@ -22,7 +22,7 @@ export type Publication = {
   images: Photo[];
 };
 
-export type Client = { name: string; role: string; images: Photo[]; publications: Publication[] };
+export type Client = { name: string; role: string; roleBold: boolean; images: Photo[]; publications: Publication[] };
 
 export type Film = { title: string; subject: string; place: string; url: string; aspect: string };
 

@@ -21,7 +21,7 @@ export default function ClientsPage() {
           <article key={client.name} className="client">
             <header className="client__head">
               <h2 className="client__name">{client.name}</h2>
-              <p className="client__role">{client.role}</p>
+              <p className="client__role" data-bold={client.roleBold}>{client.role}</p>
               {client.images?.length ? <Snapshots images={client.images} /> : null}
             </header>
             <ol className="ledger">

@@ -25,7 +25,7 @@ const query = `{
   },
   "films": *[_type == "film"] | order(orderRank) { title, subject, place, url, aspect },
   "clients": *[_type == "client"] | order(orderRank) {
-    name, role, "images": images[]${imageFields},
+    name, role, roleBold, "images": images[]${imageFields},
     "publications": publications[]{ title, url, role, credit, date, "images": images[]${imageFields} }
   }
 }`;
@@ -141,6 +141,7 @@ const content = {
   clients: result.clients.map((client) => ({
     name: client.name,
     role: client.role,
+    roleBold: client.roleBold === true,
     images: photoList(client.images, client.name),
     publications: (client.publications ?? []).map((publication) => ({
       title: publication.title,

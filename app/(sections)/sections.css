@@ -137,6 +137,10 @@
   line-height: 1.35;
 }
 
+.client__role[data-bold="true"] {
+  font-weight: 700;
+}
+
 .client__head .entry__images {
   margin-top: 1.4rem;
 }

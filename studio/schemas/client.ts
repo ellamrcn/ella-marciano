@@ -34,6 +34,7 @@ export const client = defineType({
   fields: [
     defineField({ name: "name", title: "Client", type: "string", validation: (rule) => rule.required() }),
     defineField({ name: "role", title: "Ella's role", type: "string", validation: (rule) => rule.required() }),
+    defineField({ name: "roleBold", title: "Show role in bold", type: "boolean", initialValue: false }),
     photoList("images", "Photos", "Shown next to the client name. Drag to reorder."),
     defineField({
       name: "publications",
