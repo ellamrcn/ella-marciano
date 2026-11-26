@@ -15,8 +15,25 @@ export const project = defineType({
       name: "slug",
       title: "Page address",
       type: "slug",
-      options: { source: "title", maxLength: 80 },
-      validation: (rule) => rule.required(),
+      description: "Generated from the project name. Lowercase letters, numbers and dashes only.",
+      options: {
+        source: "title",
+        maxLength: 80,
+        slugify: (input) =>
+          input
+            .normalize("NFKD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")
+            .slice(0, 80),
+      },
+      validation: (rule) =>
+        rule.required().custom((value) =>
+          !value?.current || /^[a-z0-9]+(-[a-z0-9]+)*$/.test(value.current)
+            ? true
+            : "Use lowercase letters, numbers and dashes only. Press Generate to fix it.",
+        ),
     }),
     defineField({
       name: "category",

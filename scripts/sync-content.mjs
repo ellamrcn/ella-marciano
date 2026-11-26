@@ -91,11 +91,32 @@ async function downloadAll() {
 const result = await fetchContent();
 const settings = result.settings ?? {};
 
+const toSlug = (value) =>
+  value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+const uniqueSlugs = (projects) => {
+  const taken = new Set();
+  return projects.map((project) => {
+    const base = toSlug(project.slug) || toSlug(project.title) || "project";
+    let slug = base;
+    for (let count = 2; taken.has(slug); count += 1) slug = `${base}-${count}`;
+    taken.add(slug);
+    return { ...project, slug };
+  });
+};
+
 const projectsIn = (category) =>
-  result.projects
-    .filter((project) => project.category === category)
-    .map((project) => ({ slug: project.slug, title: project.title, photos: photoList(project.photos, project.title) }))
-    .filter((project) => project.photos.length > 0);
+  uniqueSlugs(
+    result.projects
+      .filter((project) => project.category === category)
+      .map((project) => ({ slug: project.slug, title: project.title, photos: photoList(project.photos, project.title) }))
+      .filter((project) => project.photos.length > 0),
+  );
 
 const content = {
   settings: {

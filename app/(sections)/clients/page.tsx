@@ -21,10 +21,7 @@ export default function ClientsPage() {
           <article key={client.name} className="client">
             <header className="client__head">
               <h2 className="client__name">{client.name}</h2>
-              <p className="client__role">
-                <span className="role-label hand-marker">Ella&rsquo;s role</span>
-                {client.role}
-              </p>
+              <p className="client__role">{client.role}</p>
               {client.images?.length ? <Snapshots images={client.images} /> : null}
             </header>
             <ol className="ledger">
@@ -79,10 +76,7 @@ function PublicationEntry({ publication }: { publication: Publication }) {
           <PublicationTitle publication={publication} />
         </h3>
         {publication.role ? (
-          <p className="entry__role">
-            <span className="role-label hand-marker">Ella&rsquo;s role</span>
-            {publication.role}
-          </p>
+          <p className="entry__role">{publication.role}</p>
         ) : null}
         {details ? <p className="entry__details">{details}</p> : null}
       </div>
